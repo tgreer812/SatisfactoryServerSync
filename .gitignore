@@ -2,3 +2,5 @@ config.json
 
 bin/
 obj/
+
+publish/
