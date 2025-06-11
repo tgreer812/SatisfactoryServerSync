@@ -12,7 +12,7 @@ param(
     [string]$Description = "Synchronizes Satisfactory save files with Azure Blob Storage",
     
     [Parameter(Mandatory=$false)]
-    [string]$BinaryPath,
+    [string]$BinaryPath = $(Join-Path $PSScriptRoot 'bin\Debug\net8.0\SatisfactoryServerSync.Service.exe'),
     
     [Parameter(Mandatory=$false)]
     [string]$StartupType = "Automatic"
@@ -22,11 +22,6 @@ param(
 if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
     Write-Error "This script must be run as Administrator. Right-click PowerShell and select 'Run as Administrator'."
     exit 1
-}
-
-# If no binary path specified, use the current directory
-if (-not $BinaryPath) {
-    $BinaryPath = Join-Path $PSScriptRoot "SatisfactoryServerSync.Service.exe"
 }
 
 # Check if binary exists
