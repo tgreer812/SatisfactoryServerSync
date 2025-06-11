@@ -1,0 +1,21 @@
+{
+  "AzureStorage": {
+    "ConnectionString": "DefaultEndpointsProtocol=https;AccountName=your-storage-account;AccountKey=your-key;EndpointSuffix=core.windows.net",
+    "ContainerName": "satisfactory-saves"
+  },
+  "SatisfactoryGame": {
+    "ProcessName": "FactoryGame-Win64-Shipping",
+    "SaveFileDirectory": "%LOCALAPPDATA%\\FactoryGame\\Saved\\SaveGames\\76561198000000000",
+    "SaveFilePrefix": "Session1_autosave_0"
+  },
+  "Synchronization": {
+    "CheckIntervalMinutes": 1,
+    "CloudSaveFileName": "satisfactory-save.sav",
+    "CloudHashFileName": "cloud-save-hash.md5",
+    "LocalHashCacheFileName": "last-cloud-hash.txt"
+  },
+  "Logging": {
+    "LogFilePath": "logs\\sync.log",
+    "LogLevel": "Information"
+  }
+}
