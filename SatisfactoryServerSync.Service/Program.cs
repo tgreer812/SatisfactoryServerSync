@@ -35,13 +35,18 @@ try
         
         logging.AddTraceSource(new System.Diagnostics.SourceSwitch("SatisfactorySync", config.Logging.LogLevel), fileListener);
         
-        // Set minimum log level
-        if (Enum.TryParse<LogLevel>(config.Logging.LogLevel, true, out var logLevel))
+        // Log the raw log level value for debugging
+        Console.WriteLine($"[DEBUG] config.Logging.LogLevel raw value: '{config.Logging.LogLevel}'");
+        
+        // Trim whitespace before parsing log level
+        var trimmedLogLevel = config.Logging.LogLevel?.Trim();
+        if (Enum.TryParse<LogLevel>(trimmedLogLevel, true, out var logLevel))
         {
             logging.SetMinimumLevel(logLevel);
         }
         else
         {
+            Console.WriteLine($"[WARN] Invalid log level in config: '{config.Logging.LogLevel}', defaulting to Information.");
             logging.SetMinimumLevel(LogLevel.Information);
         }
     });
